@@ -9,10 +9,13 @@
 body{
     min-height: 100vh;
     background: linear-gradient(to right, #b1b1b1, #838a93);
+    background-image: url(../images/medicine.jpg);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins', sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container{
