@@ -20,6 +20,19 @@
 
       .navbar {
         background-color: #00637f !important;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-brand img {
+        margin-right: 10px;
+      }
+
+      .navbar h3 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: #fff;
       }
 
       .sidebar {
@@ -44,8 +57,9 @@
       }
 
       .main-content {
-        margin-left: 0px;
         padding: 20px;
+        width: 100%;
+        max-width: 100%;
       }
 
       .order-form {
@@ -71,7 +85,8 @@
       }
 
       .order-form input[type="text"],
-      .order-form input[type="number"] {
+      .order-form input[type="number"],
+      .order-form select {
         width: 100%;
         padding: 10px;
         margin-bottom: 20px;
@@ -93,6 +108,94 @@
       .order-form button:hover {
         background-color: #004f61;
       }
+
+      .order-form select {
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .order-form p {
+        font-size: 0.9rem;
+        color: red;
+        text-align: left;
+        margin-top: 10px;
+      }
+
+      /* Media Queries for Mobile Responsiveness */
+      @media (max-width: 767px) {
+        .navbar {
+          display: flex;
+          justify-content: center;
+        }
+
+        .navbar h3 {
+          font-size: 1.2rem;
+          text-align: center;
+        }
+
+        .navbar-brand {
+          display: none;
+          /* Hide logo on smaller screens */
+        }
+
+        .sidebar {
+          width: 200px;
+        }
+
+        .main-content {
+          padding: 10px;
+          margin-left: 0;
+        }
+
+        .order-form {
+          margin: 30px auto;
+          width: 90%;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form button {
+          padding: 12px;
+          font-size: 14px;
+        }
+
+        .order-form h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* For very small devices */
+      @media (max-width: 480px) {
+        .navbar {
+          justify-content: center;
+          text-align: center;
+        }
+
+        .navbar h3 {
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .navbar-brand {
+          display: none;
+          /* Hide logo for very small devices */
+        }
+
+        .order-form h2 {
+          font-size: 1.2rem;
+        }
+
+        .order-form {
+          padding: 15px;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form button {
+          padding: 10px;
+          font-size: 12px;
+        }
+      }
     </style>
   </head>
 
@@ -104,54 +207,54 @@
       <h3 class="text-light">AarogyaFly Urgent Care</h3>
     </div>
 
+
     <div class="main-content">
       <div class="order-form">
         <h2>Order Medicine</h2>
-        <!-- Dropdown for Medications -->
-        <label for="medications-category">Select Medication:</label>
-        <select id="medications-category" name="medications-category">
-          <option value="">Select an option</option>
-          <option value="EpiPen">EpiPen (Epinephrine Auto-Injector)</option>
-          <option value="Naloxone">Naloxone Auto-Injector</option>
-          <option value="Atropine">Atropine Auto-Injector</option>
-          <option value="Diazepam">Diazepam Auto-Injector</option>
-          <option value="Aspirin">Aspirin</option>
-          <option value="Nitroglycerin">Nitroglycerin Tablets</option>
-          <option value="Antihistamines">Antihistamines</option>
-          <option value="Pain Relievers">Pain Relievers</option>
-          <option value="Antibiotics">Antibiotics</option>
-          <option value="Antiseptic Creams">Antiseptic Creams or Ointments</option>
-        </select>
-
-        <!-- Dropdown for Medical Supplies -->
-        <label for="medical-supplies-category">Select Medical Supply:</label>
-        <select id="medical-supplies-category" name="medical-supplies-category">
-          <option value="">Select an option</option>
-          <option value="Nitrile Gloves">Nitrile Gloves</option>
-          <option value="Adhesive Bandages">Adhesive Bandages</option>
-          <option value="Sterile Gauze Pads">Sterile Gauze Pads</option>
-          <option value="Adhesive Tape">Adhesive Tape</option>
-          <option value="Instant Cold Packs">Instant Cold Packs</option>
-          <option value="Burn Dressings">Burn Dressings</option>
-          <option value="CPR Masks">CPR Masks</option>
-          <option value="First Aid Scissors">First Aid Scissors</option>
-          <option value="Tweezers">Tweezers</option>
-          <option value="Emergency Blankets">Emergency Blankets</option>
-          <option value="Tourniquets">Tourniquets</option>
-          <option value="Splints">Splints</option>
-        </select>
-
-        <!-- Dropdown for Emergency Equipment -->
-        <label for="emergency-equipment-category">Select Emergency Equipment:</label>
-        <select id="emergency-equipment-category" name="emergency-equipment-category">
-          <option value="">Select an option</option>
-          <option value="Portable Oxygen Masks">Portable Oxygen Masks</option>
-          <option value="AED">Automated External Defibrillators (AEDs)</option>
-          <option value="First Aid Manuals">Emergency First Aid Manuals</option>
-        </select>
-        <br>
-        <br>
         <form action="/admin/inv_med_order" method="POST">
+          <!-- Dropdown for Medications -->
+          <label for="medications-category">Select Medication:</label>
+          <select id="medications-category" name="medications-category">
+            <option value="">Select an option</option>
+            <option value="EpiPen">EpiPen (Epinephrine Auto-Injector)</option>
+            <option value="Naloxone">Naloxone Auto-Injector</option>
+            <option value="Atropine">Atropine Auto-Injector</option>
+            <option value="Diazepam">Diazepam Auto-Injector</option>
+            <option value="Aspirin">Aspirin</option>
+            <option value="Nitroglycerin">Nitroglycerin Tablets</option>
+            <option value="Antihistamines">Antihistamines</option>
+            <option value="Pain Relievers">Pain Relievers</option>
+            <option value="Antibiotics">Antibiotics</option>
+            <option value="Antiseptic Creams">Antiseptic Creams or Ointments</option>
+          </select>
+
+          <!-- Dropdown for Medical Supplies -->
+          <label for="medical-supplies-category">Select Medical Supply:</label>
+          <select id="medical-supplies-category" name="medical-supplies-category">
+            <option value="">Select an option</option>
+            <option value="Nitrile Gloves">Nitrile Gloves</option>
+            <option value="Adhesive Bandages">Adhesive Bandages</option>
+            <option value="Sterile Gauze Pads">Sterile Gauze Pads</option>
+            <option value="Adhesive Tape">Adhesive Tape</option>
+            <option value="Instant Cold Packs">Instant Cold Packs</option>
+            <option value="Burn Dressings">Burn Dressings</option>
+            <option value="CPR Masks">CPR Masks</option>
+            <option value="First Aid Scissors">First Aid Scissors</option>
+            <option value="Tweezers">Tweezers</option>
+            <option value="Emergency Blankets">Emergency Blankets</option>
+            <option value="Tourniquets">Tourniquets</option>
+            <option value="Splints">Splints</option>
+          </select>
+
+          <!-- Dropdown for Emergency Equipment -->
+          <label for="emergency-equipment-category">Select Emergency Equipment:</label>
+          <select id="emergency-equipment-category" name="emergency-equipment-category">
+            <option value="">Select an option</option>
+            <option value="Portable Oxygen Masks">Portable Oxygen Masks</option>
+            <option value="AED">Automated External Defibrillators (AEDs)</option>
+            <option value="First Aid Manuals">Emergency First Aid Manuals</option>
+          </select>
+
           <label for="medicine-name">Other Emergency Item Name:</label>
           <input type="text" id="medicine-name" name="medicine-name" placeholder="Enter medicine name" required />
 
@@ -165,10 +268,12 @@
           <label for="order-comment">Order Comment:</label>
           <input type="text" id="order-comment" name="order-comment"
             placeholder="Enter any additional comments or instructions" rows="4"></textarea>
+
+          <!-- Note before the submit button -->
+          <p class="note">Before place the order move to an open space for delivery.</p>
+
+          <button type="submit">Submit Order</button>
         </form>
-        <br>
-        <br>
-        <button type="submit">Submit Order</button>
       </div>
     </div>
 
