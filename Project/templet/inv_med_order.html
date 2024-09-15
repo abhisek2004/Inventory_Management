@@ -22,11 +22,20 @@
         background-color: #00637f !important;
         padding: 10px;
         display: flex;
+        justify-content: center;
         align-items: center;
+        position: relative;
+      }
+
+      .navbar-brand {
+        position: absolute;
+        left: 10px;
       }
 
       .navbar-brand img {
         margin-right: 10px;
+        width: 40px;
+        height: 40px;
       }
 
       .navbar h3 {
@@ -109,11 +118,6 @@
         background-color: #004f61;
       }
 
-      .order-form select {
-        padding: 10px;
-        border-radius: 5px;
-      }
-
       .order-form p {
         font-size: 0.9rem;
         color: red;
@@ -124,7 +128,6 @@
       /* Media Queries for Mobile Responsiveness */
       @media (max-width: 767px) {
         .navbar {
-          display: flex;
           justify-content: center;
         }
 
@@ -134,8 +137,13 @@
         }
 
         .navbar-brand {
-          display: none;
-          /* Hide logo on smaller screens */
+          position: absolute;
+          left: 10px;
+        }
+
+        .navbar-brand img {
+          width: 35px;
+          height: 35px;
         }
 
         .sidebar {
@@ -177,8 +185,13 @@
         }
 
         .navbar-brand {
-          display: none;
-          /* Hide logo for very small devices */
+          position: absolute;
+          left: 10px;
+        }
+
+        .navbar-brand img {
+          width: 30px;
+          height: 30px;
         }
 
         .order-form h2 {
@@ -207,11 +220,10 @@
       <h3 class="text-light">AarogyaFly Urgent Care</h3>
     </div>
 
-
     <div class="main-content">
       <div class="order-form">
         <h2>Order Medicine</h2>
-        <form action="/admin/inv_med_order" method="POST">
+        <form id="order-form">
           <!-- Dropdown for Medications -->
           <label for="medications-category">Select Medication:</label>
           <select id="medications-category" name="medications-category">
@@ -229,7 +241,7 @@
           </select>
 
           <!-- Dropdown for Medical Supplies -->
-          <label for="medical-supplies-category">Select Medical Supply:</label>
+          <!-- <label for="medical-supplies-category">Select Medical Supply:</label>
           <select id="medical-supplies-category" name="medical-supplies-category">
             <option value="">Select an option</option>
             <option value="Nitrile Gloves">Nitrile Gloves</option>
@@ -244,16 +256,16 @@
             <option value="Emergency Blankets">Emergency Blankets</option>
             <option value="Tourniquets">Tourniquets</option>
             <option value="Splints">Splints</option>
-          </select>
+          </select> -->
 
           <!-- Dropdown for Emergency Equipment -->
-          <label for="emergency-equipment-category">Select Emergency Equipment:</label>
+          <!-- <label for="emergency-equipment-category">Select Emergency Equipment:</label>
           <select id="emergency-equipment-category" name="emergency-equipment-category">
             <option value="">Select an option</option>
             <option value="Portable Oxygen Masks">Portable Oxygen Masks</option>
             <option value="AED">Automated External Defibrillators (AEDs)</option>
             <option value="First Aid Manuals">Emergency First Aid Manuals</option>
-          </select>
+          </select> -->
 
           <label for="medicine-name">Other Emergency Item Name:</label>
           <input type="text" id="medicine-name" name="medicine-name" placeholder="Enter medicine name" required />
@@ -270,12 +282,32 @@
             placeholder="Enter any additional comments or instructions" rows="4"></textarea>
 
           <!-- Note before the submit button -->
-          <p class="note">Before place the order move to an open space for delivery.</p>
+          <p class="note">Before placing the order, move to an open space for delivery.</p>
 
-          <button type="submit">Submit Order</button>
+          <button type="button" onclick="submitOrder()">Submit Order</button>
         </form>
       </div>
     </div>
+
+    <script>
+      function submitOrder() {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Prompt user for location
+        // var location = prompt("Please enter your location to receive the items:");
+
+        if (location) {
+          // Show success message
+          alert("Order placed successfully! Thank you.");
+
+          // Optionally, reset the form
+          document.getElementById("order-form").reset();
+        } else {
+          alert("Location is required to place the order.");
+        }
+      }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
